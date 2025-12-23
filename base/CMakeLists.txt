@@ -65,15 +65,19 @@ therock_cmake_subproject_declare(amdsmi
   USE_DIST_AMDGPU_TARGETS
   BACKGROUND_BUILD
   CMAKE_ARGS
-    # TODO: Enable tests
-    # -DBUILD_TESTS=${THEROCK_BUILD_TESTING}
-    "-DENABLE_ESMI_LIB=OFF"
     "-DCMAKE_VERBOSE_MAKEFILE=OFF"
+    -DBUILD_TESTS=${THEROCK_BUILD_TESTING}
+    # Disable ESMI on PPC64
+    "-DENABLE_ESMI_LIB=OFF"
   BUILD_DEPS
     therock-googletest
   RUNTIME_DEPS
     rocm-core
     ${THEROCK_BUNDLED_LIBDRM}
+  INSTALL_RPATH_DIRS
+    lib
+  INTERFACE_INSTALL_RPATH_DIRS
+    lib
 )
 therock_cmake_subproject_provide_package(amdsmi
   amd_smi lib/cmake)
