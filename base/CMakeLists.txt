@@ -70,6 +70,7 @@ therock_cmake_subproject_declare(amdsmi
   CMAKE_ARGS
     "-DCMAKE_VERBOSE_MAKEFILE=OFF"
     -DBUILD_TESTS=${THEROCK_BUILD_TESTING}
+    "-DENABLE_ESMI_LIB=OFF"
   BUILD_DEPS
     therock-googletest
   RUNTIME_DEPS
