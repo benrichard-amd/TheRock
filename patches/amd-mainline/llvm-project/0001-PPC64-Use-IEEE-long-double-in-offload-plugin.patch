@@ -1,0 +1,24 @@
+From 76f3267c47c747f75637e3b5b7eb967255b1f73d Mon Sep 17 00:00:00 2001
+From: berichar <ben.richard@amd.com>
+Date: Wed, 7 Jan 2026 10:05:19 -0500
+Subject: [PATCH] PPC64: Use IEEE long double in offload plugin
+
+---
+ offload/plugins-nextgen/CMakeLists.txt | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/offload/plugins-nextgen/CMakeLists.txt b/offload/plugins-nextgen/CMakeLists.txt
+index 4a3a5ee0ddb1..7e474468c6ad 100644
+--- a/offload/plugins-nextgen/CMakeLists.txt
++++ b/offload/plugins-nextgen/CMakeLists.txt
+@@ -1,3 +1,7 @@
++if(CMAKE_SYSTEM_PROCESSOR MATCHES "ppc64le")
++  add_compile_options(-mabi=ieeelongdouble)
++endif()
++
+ # Common interface to handle creating a plugin library.
+ set(common_dir ${CMAKE_CURRENT_SOURCE_DIR}/common)
+ set(common_bin_dir ${CMAKE_CURRENT_BINARY_DIR}/common)
+-- 
+2.50.1 (Apple Git-155)
+
